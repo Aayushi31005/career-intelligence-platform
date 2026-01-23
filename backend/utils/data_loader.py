@@ -14,3 +14,9 @@ def load_job_descriptions(role_file: str):
     path = BASE_DATA_PATH / "mock_job_descriptions" / role_file
     with open(path, "r") as f:
         return json.load(f)
+def load_role_skill_set(role_file: str):
+    role_data = load_job_descriptions(role_file)
+    skills = set()
+    for desc in role_data["descriptions"]:
+        skills.update(desc["skills"])
+    return skills
