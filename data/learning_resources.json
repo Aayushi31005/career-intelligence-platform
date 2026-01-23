@@ -1,0 +1,20 @@
+{
+  "python": [
+    {
+      "title": "Python for Everybody",
+      "platform": "Coursera",
+      "difficulty": "beginner",
+      "type": "course",
+      "popularity_score": 4.7
+    }
+  ],
+  "docker": [
+    {
+      "title": "Docker Essentials",
+      "platform": "Udemy",
+      "difficulty": "intermediate",
+      "type": "course",
+      "popularity_score": 4.5
+    }
+  ]
+}

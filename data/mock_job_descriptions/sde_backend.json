@@ -1,0 +1,15 @@
+{
+  "role": "Backend Software Engineer",
+  "descriptions": [
+    {
+      "company_type": "product",
+      "skills": ["python", "sql", "rest api", "docker"],
+      "experience_level": "entry"
+    },
+    {
+      "company_type": "startup",
+      "skills": ["python", "fastapi", "postgresql", "aws"],
+      "experience_level": "entry"
+    }
+  ]
+}

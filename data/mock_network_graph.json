@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    {
+      "id": "user_1",
+      "type": "user",
+      "role": "student",
+      "institution": "XYZ University"
+    },
+    {
+      "id": "person_2",
+      "type": "professional",
+      "role": "Backend Engineer",
+      "company": "TechCorp",
+      "institution": "XYZ University"
+    }
+  ],
+  "edges": [
+    {
+      "from": "user_1",
+      "to": "person_2",
+      "relationship": "alumni"
+    }
+  ]
+}

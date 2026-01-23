@@ -1,0 +1,38 @@
+{
+  "role": "Data Analyst",
+  "descriptions": [
+    {
+      "company_type": "product",
+      "skills": [
+        "sql",
+        "excel",
+        "data visualization",
+        "statistics",
+        "python"
+      ],
+      "experience_level": "entry"
+    },
+    {
+      "company_type": "enterprise",
+      "skills": [
+        "sql",
+        "tableau",
+        "power bi",
+        "business analysis",
+        "statistics"
+      ],
+      "experience_level": "entry"
+    },
+    {
+      "company_type": "startup",
+      "skills": [
+        "sql",
+        "python",
+        "pandas",
+        "data cleaning",
+        "data storytelling"
+      ],
+      "experience_level": "entry"
+    }
+  ]
+}

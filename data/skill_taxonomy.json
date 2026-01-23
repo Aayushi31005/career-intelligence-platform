@@ -1,0 +1,12 @@
+{
+  "python": {
+    "category": "programming_language",
+    "aliases": ["python3", "py"],
+    "related_skills": ["django", "flask", "fastapi"]
+  },
+  "sql": {
+    "category": "database",
+    "aliases": ["postgresql", "mysql"],
+    "related_skills": ["database design", "query optimization"]
+  }
+}

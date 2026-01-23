@@ -1,0 +1,38 @@
+{
+  "role": "Machine Learning Engineer",
+  "descriptions": [
+    {
+      "company_type": "product",
+      "skills": [
+        "python",
+        "machine learning",
+        "data preprocessing",
+        "model evaluation",
+        "sql"
+      ],
+      "experience_level": "entry"
+    },
+    {
+      "company_type": "startup",
+      "skills": [
+        "python",
+        "scikit-learn",
+        "deep learning",
+        "model deployment",
+        "docker"
+      ],
+      "experience_level": "entry"
+    },
+    {
+      "company_type": "research",
+      "skills": [
+        "python",
+        "machine learning",
+        "statistics",
+        "experimentation",
+        "model tuning"
+      ],
+      "experience_level": "entry"
+    }
+  ]
+}
