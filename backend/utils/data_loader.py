@@ -24,3 +24,7 @@ def load_learning_resources():
     path = BASE_DATA_PATH / "learning_resources.json"
     with open(path, "r") as f:
         return json.load(f)
+def load_network_graph():
+    path = BASE_DATA_PATH / "mock_network_graph.json"
+    with open(path, "r") as f:
+        return json.load(f)
