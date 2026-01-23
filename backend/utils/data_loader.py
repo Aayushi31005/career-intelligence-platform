@@ -20,3 +20,7 @@ def load_role_skill_set(role_file: str):
     for desc in role_data["descriptions"]:
         skills.update(desc["skills"])
     return skills
+def load_learning_resources():
+    path = BASE_DATA_PATH / "learning_resources.json"
+    with open(path, "r") as f:
+        return json.load(f)
