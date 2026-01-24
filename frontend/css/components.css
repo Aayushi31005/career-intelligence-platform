@@ -1,0 +1,128 @@
+/* =========================
+   CARDS
+   ========================= */
+
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  padding: 1.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+}
+
+/* =========================
+   SECTION SPACING
+   ========================= */
+
+.section {
+  margin-bottom: 2rem;
+}
+
+/* =========================
+   THEME BUTTONS
+   ========================= */
+
+.theme-button {
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.theme-blue {
+  background-color: #3b82f6;
+}
+
+.theme-teal {
+  background-color: #14b8a6;
+}
+
+.theme-lavender {
+  background-color: #6366f1;
+}
+
+.theme-rose {
+  background-color: #f43f5e;
+}
+
+/* =========================
+   TOP NAVIGATION BAR
+   ========================= */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+/* =========================
+   DROPDOWN MENU
+   ========================= */
+
+.menu-panel {
+  position: absolute;
+  top: 70px;
+  right: 2rem;
+  width: 240px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  z-index: 100;
+}
+
+.menu-section {
+  margin-bottom: 1rem;
+}
+
+.menu-section a {
+  display: block;
+  padding: 0.5rem 0;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.menu-section a:hover {
+  color: var(--primary);
+}
+
+.menu-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.theme-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* hide/show */
+.hidden {
+  display: none;
+}

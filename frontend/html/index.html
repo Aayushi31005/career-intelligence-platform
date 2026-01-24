@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Career Intelligence Platform</title>
+
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+
+<body data-theme="blue">
+
+  <!-- Top Navigation -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="logo">Career Intelligence</span>
+    </div>
+
+    <div class="topbar-right">
+      <button class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- Dropdown Menu -->
+     <div class="menu-panel hidden" id="menuPanel">
+        <nav class="menu-section">
+            <a href="index.html">Home</a>
+
+            <a href="skill_gap.html">Skill Gap</a>
+
+            <a href="ats.html">ATS Readiness</a>
+    
+            <a href="role_matching.html">Role Matching</a>
+
+            <a href="learning.html">Learning</a>
+
+            <a href="network.html">Network Paths</a>
+        </nav>
+
+        <div class="menu-section">
+             <p class="menu-title">Theme</p>
+             <div class="theme-row">
+                <button class="theme-button theme-blue" data-theme="blue"></button>
+                <button class="theme-button theme-teal" data-theme="teal"></button>
+                <button class="theme-button theme-lavender" data-theme="lavender"></button>
+                <button class="theme-button theme-rose" data-theme="rose"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🌿 HERO / INTRO -->
+    <section class="intro">
+      <h1>Career Intelligence Platform</h1>
+      <p>
+        A calm, decision-support system to help you understand
+        career readiness, skill gaps, and intentional networking paths.
+      </p>
+    </section>
+
+    <!-- 🧠 WORKSPACE -->
+    <section class="workspace">
+
+      <div class="card">
+        <h2>Analyze Your Profile</h2>
+
+        <label for="resume">Your resume</label>
+        <textarea
+          id="resume"
+          rows="6"
+          placeholder="Paste your resume here..."
+        ></textarea>
+
+        <label for="role">Target role</label>
+        <select id="role">
+          <option value="">Select a role</option>
+          <option>Backend Software Engineer</option>
+          <option>Data Analyst</option>
+          <option>Machine Learning Engineer</option>
+        </select>
+
+        <button>Analyze My Profile</button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="../js/menu.js"> defer</script>
+</body>
+</html>
