@@ -1,33 +1,37 @@
-document.getElementById("analyzeBtn").addEventListener("click", async () => {
-  const resumeText = document.getElementById("resume").value;
-  const role = document.getElementById("role").value;
+document
+  .getElementById("analyzeSkillGap")
+  .addEventListener("click", async () => {
+    const resume = document.getElementById("resume").value;
+    const role = document.getElementById("role").value;
+    const resultsDiv = document.getElementById("results");
 
-  if (!resumeText || !role) {
-    alert("Please paste your resume and select a role.");
-    return;
-  }
+    if (!resume || !role) {
+      resultsDiv.innerHTML = "<p>Please provide resume and role.</p>";
+      return;
+    }
 
-  // simple extraction (backend does real intelligence)
-  const userSkills = resumeText
-    .toLowerCase()
-    .split(/[\s,]+/)
-    .filter(word => word.length > 2);
+    const skills = resume
+      .toLowerCase()
+      .split(/[\s,]+/)
+      .filter(w => w.length > 2);
 
-  const payload = {
-    user_skills: userSkills,
-    target_role: role,
-  };
+    const result = await postData("/skill-gap", {
+      user_skills: skills,
+      target_role: role,
+    });
 
-  const result = await postData("/skill-gap", payload);
+    if (result.error) {
+      resultsDiv.innerHTML = "<p>Error analyzing skill gap.</p>";
+      return;
+    }
 
-  if (result.error) {
-    alert("Skill gap analysis failed.");
-    return;
-  }
+    resultsDiv.innerHTML = `
+      <p><strong>Existing skills:</strong></p>
+      <ul>${result.existing_skills.map(s => `<li>${s}</li>`).join("")}</ul>
 
-  localStorage.setItem("skillGapResult", JSON.stringify(result));
-  localStorage.setItem("resumeText", resumeText);
-  localStorage.setItem("targetRole", role);
-
-  window.location.href = "skill_gap.html";
-});
+      <p><strong>Missing skills:</strong></p>
+      <ul>${result.missing_skills
+        .map(s => `<li>${s.skill} (${s.importance})</li>`)
+        .join("")}</ul>
+    `;
+  });
