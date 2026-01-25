@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Role Matching</title>
+  <link rel="stylesheet" href="../css/base.css" />
+</head>
+
+<body data-theme="blue">
+  <div class="container">
+    <div class="card">
+      <h2>Role Matching</h2>
+      <p>
+        Paste your resume text to see which roles you align with today
+        and which ones are good future targets.
+      </p>
+
+      <label for="resume">Your resume</label>
+      <textarea
+        id="resume"
+        rows="6"
+        placeholder="Paste your resume here..."
+      ></textarea>
+
+      <button id="matchRoles">Check Role Fit</button>
+
+      <div id="roleResults"></div>
+    </div>
+  </div>
+
+  <script src="../js/api.js"></script>
+  <script src="../js/role_matching.js"></script>
+</body>
+</html>
