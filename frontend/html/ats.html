@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>ATS Readiness</title>
   <link rel="stylesheet" href="../css/base.css" />
 </head>
@@ -8,34 +9,29 @@
 <body data-theme="blue">
   <div class="container">
     <div class="card">
-      <h2>ATS Readiness</h2>
-      <div id="atsResult"></div>
+      <h2>ATS Readiness Check</h2>
+      <p>
+        See how well your resume aligns with a specific role — 
+        without judgment or pressure.
+      </p>
 
-      <button onclick="window.location.href='role_matching.html'">
-        Continue
-      </button>
-    </div>
-  </div>
+      <label for="resume">Your resume</label>
+      <textarea
+        id="resume"
+        placeholder="Paste your resume text here..."
+      ></textarea>
 
-  <script src="../js/api.js"></script>
-  <script src="../js/ats.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-  <title>ATS Readiness</title>
-  <link rel="stylesheet" href="../css/base.css" />
-</head>
+      <label for="role">Target role</label>
+      <select id="role">
+        <option value="">Select a role</option>
+        <option>Backend Software Engineer</option>
+        <option>Data Analyst</option>
+        <option>Machine Learning Engineer</option>
+      </select>
 
-<body data-theme="blue">
-  <div class="container">
-    <div class="card">
-      <h2>ATS Readiness</h2>
-      <div id="atsResult"></div>
+      <button id="checkATS">Check ATS Readiness</button>
 
-      <button onclick="window.location.href='role_matching.html'">
-        Continue
-      </button>
+      <div id="atsResults"></div>
     </div>
   </div>
 
