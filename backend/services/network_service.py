@@ -1,5 +1,4 @@
 import networkx as nx
-
 from backend.utils.data_loader import load_network_graph
 
 
@@ -19,48 +18,50 @@ def build_graph(graph_data):
     return G
 
 
-def find_target_nodes(G, target_role):
-    return [
-        node for node, data in G.nodes(data=True)
-        if data.get("role") == target_role
-    ]
+def find_node_by_name(G, name):
+    for node_id, data in G.nodes(data=True):
+        if data.get("name") == name:
+            return node_id
+    return None
 
 
 def explain_path(G, path):
-    if len(path) < 2:
-        return "Direct connection"
+    explanations = []
 
-    start, end = path[0], path[-1]
-    end_role = G.nodes[end].get("role")
-    relationship = G.edges[path[0], path[1]].get("relationship")
+    for i in range(len(path) - 1):
+        src = G.nodes[path[i]]
+        dst = G.nodes[path[i + 1]]
+        relationship = G.edges[path[i], path[i + 1]]["relationship"]
 
-    return f"{relationship.capitalize()} connection working as {end_role}"
+        explanations.append(
+            f"{src['name']} can reach {dst['name']} via {relationship.replace('_', ' ')} "
+            f"({dst.get('role')} at {dst.get('company') or dst.get('institution')})"
+        )
+
+    return " → ".join(explanations)
 
 
-def find_network_paths(target_role: str):
+def find_network_paths(payload: dict):
     graph_data = load_network_graph()
     G = build_graph(graph_data)
 
-    USER_NODE_ID = "user_1"  # prototype assumption
+    user_name = payload["user"]["name"]
+    target_name = payload["target"]["name"]
 
-    if USER_NODE_ID not in G:
-        return {"error": "User node not found in network"}
+    user_node = find_node_by_name(G, user_name)
+    target_node = find_node_by_name(G, target_name)
 
-    target_nodes = find_target_nodes(G, target_role)
+    if not user_node or not target_node:
+        return {"error": "User or target not found in network"}
 
-    paths = []
-
-    for target in target_nodes:
-        try:
-            shortest_path = nx.shortest_path(G, USER_NODE_ID, target)
-            paths.append({
-                "path": shortest_path,
-                "reason": explain_path(G, shortest_path)
-            })
-        except nx.NetworkXNoPath:
-            continue
+    try:
+        path = nx.shortest_path(G, user_node, target_node)
+    except nx.NetworkXNoPath:
+        return {"paths": []}
 
     return {
-        "target_role": target_role,
-        "paths": paths
+        "user": user_name,
+        "target": target_name,
+        "path": path,
+        "explanation": explain_path(G, path)
     }

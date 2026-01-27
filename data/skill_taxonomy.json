@@ -10,18 +10,18 @@
     "related_skills": ["database design", "query optimization"]
   },
   "fastapi": {
-  "category": "backend_framework",
-  "aliases": ["fast api"],
-  "related_skills": ["python", "rest api"]
-},
-"docker": {
-  "category": "devops",
-  "aliases": [],
-  "related_skills": ["containers"]
-},
-"aws": {
-  "category": "cloud",
-  "aliases": ["amazon web services"],
-  "related_skills": ["cloud computing"]
-}
+    "category": "backend_framework",
+    "aliases": ["fast api"],
+    "related_skills": ["python", "rest api"]
+  },
+  "docker": {
+    "category": "devops",
+    "aliases": [],
+    "related_skills": ["containers"]
+  },
+  "aws": {
+    "category": "cloud",
+    "aliases": ["amazon web services"],
+    "related_skills": ["cloud computing"]
+  }
 }

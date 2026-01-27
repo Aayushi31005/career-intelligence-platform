@@ -16,5 +16,23 @@
       "type": "course",
       "popularity_score": 4.5
     }
-  ]
+  ],
+  "fastapi": [
+    {
+      "title": "FastAPI Crash Course",
+      "platform": "YouTube",
+      "difficulty": "beginner",
+      "type": "video",
+      "popularity_score": 4.6
+    }
+  ],
+  "aws": [
+    {
+      "title": "AWS Cloud Practitioner Essentials",
+      "platform": "Coursera",
+      "difficulty": "beginner",
+      "type": "course",
+      "popularity_score": 4.7
+    }
+  ] 
 }

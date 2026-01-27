@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Networking Paths</title>
+  <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
+</head>
+
+<body data-theme="blue">
+
+  <!-- Top Bar (shared everywhere) -->
+  <header class="topbar">
+    <div class="topbar-left">Career Intelligence</div>
+    <div class="topbar-right">
+      <button class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <div id="menuPanel" class="menu-panel hidden"></div>
+
+  <!-- Page Content -->
+  <main class="container">
+    <div class="card">
+      <h2>Networking Paths</h2>
+      <p>
+        Find meaningful connection paths — based on real relationships,
+        not cold outreach.
+      </p>
+
+      <label>Your name</label>
+      <input id="userName" placeholder="Your name" />
+
+      <label>Your institution</label>
+      <input id="userInstitution" placeholder="Your institution" />
+
+      <hr />
+
+      <label>Target person</label>
+      <input id="targetName" placeholder="Person you want to connect with" />
+
+      <label>Target company</label>
+      <input id="targetCompany" placeholder="Their company" />
+
+      <button id="networkBtn">Find Connection Paths</button>
+
+      <div id="networkResults" style="margin-top: 1rem;"></div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/network.js" defer></script>
+
+</body>
+</html>

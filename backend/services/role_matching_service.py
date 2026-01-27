@@ -1,4 +1,6 @@
+import re
 from backend.utils.data_loader import load_skill_taxonomy, load_role_skill_set
+
 
 ROLE_FILE_MAP = {
     "Backend Software Engineer": "sde_backend.json",
@@ -12,11 +14,12 @@ def normalize_resume_skills(resume_text: str, taxonomy: dict):
     found_skills = set()
 
     for skill, meta in taxonomy.items():
-        if skill in text:
+        if re.search(rf"\b{re.escape(skill)}\b", text):
             found_skills.add(skill)
             continue
+
         for alias in meta.get("aliases", []):
-            if alias in text:
+            if re.search(rf"\b{re.escape(alias)}\b", text):
                 found_skills.add(skill)
                 break
 
@@ -37,22 +40,22 @@ def match_roles(payload: dict):
     taxonomy = load_skill_taxonomy()
 
     resume_skills = normalize_resume_skills(resume_text, taxonomy)
-
     results = []
 
     for role, role_file in ROLE_FILE_MAP.items():
-        role_skills = load_role_skill_set(role_file)
+        role_skills = set(load_role_skill_set(role_file) or [])
 
         if not role_skills:
             continue
 
         matched = resume_skills & role_skills
         coverage = round(len(matched) / len(role_skills), 2)
+        fit = fit_category(coverage)
 
         results.append({
             "role": role,
             "skill_coverage": coverage,
-            "fit_level": fit_category(coverage)
+            "fit_level": fit
         })
 
     return {

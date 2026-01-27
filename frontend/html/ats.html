@@ -4,37 +4,40 @@
   <meta charset="UTF-8" />
   <title>ATS Readiness</title>
   <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
 </head>
 
 <body data-theme="blue">
-  <div class="container">
+
+  <!-- Top Bar (shared everywhere) -->
+  <header class="topbar">
+    <div class="topbar-left">Career Intelligence</div>
+    <div class="topbar-right">
+      <button class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <div id="menuPanel" class="menu-panel hidden"></div>
+
+  <main class="container">
     <div class="card">
       <h2>ATS Readiness Check</h2>
-      <p>
-        See how well your resume aligns with a specific role — 
-        without judgment or pressure.
-      </p>
+      <p>See how well your resume aligns with a specific role.</p>
 
-      <label for="resume">Your resume</label>
-      <textarea
-        id="resume"
-        placeholder="Paste your resume text here..."
-      ></textarea>
+      <label for="resume">Resume text</label>
+      <textarea id="resume" placeholder="Paste your resume here..."></textarea>
 
       <label for="role">Target role</label>
-      <select id="role">
-        <option value="">Select a role</option>
-        <option>Backend Software Engineer</option>
-        <option>Data Analyst</option>
-        <option>Machine Learning Engineer</option>
-      </select>
+      <input id="role" placeholder="e.g. Backend Software Engineer" />
 
-      <button id="checkATS">Check ATS Readiness</button>
+      <button id="atsBtn">Check ATS Readiness</button>
 
-      <div id="atsResults"></div>
+      <div id="atsResult" style="margin-top:1rem;"></div>
     </div>
-  </div>
+  </main>
 
+  <script src="../js/menu.js"></script>
   <script src="../js/api.js"></script>
   <script src="../js/ats.js"></script>
 </body>

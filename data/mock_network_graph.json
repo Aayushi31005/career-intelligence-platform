@@ -1,24 +1,66 @@
 {
   "nodes": [
     {
-      "id": "user_1",
-      "type": "user",
-      "role": "student",
-      "institution": "XYZ University"
+      "id": "ananya",
+      "name": "Ananya Sharma",
+      "role": "Student",
+      "company": null,
+      "institution": "XYZ University",
+      "type": "user"
     },
     {
-      "id": "person_2",
-      "type": "professional",
-      "role": "Backend Engineer",
+      "id": "rahul",
+      "name": "Rahul Mehta",
+      "role": "Backend Software Engineer",
       "company": "TechCorp",
-      "institution": "XYZ University"
+      "institution": "XYZ University",
+      "type": "professional"
+    },
+    {
+      "id": "priya",
+      "name": "Priya Verma",
+      "role": "Senior Backend Engineer",
+      "company": "TechCorp",
+      "institution": "ABC Institute",
+      "type": "professional"
+    },
+    {
+      "id": "arjun",
+      "name": "Arjun Rao",
+      "role": "Product Manager",
+      "company": "StartupX",
+      "institution": "ABC Institute",
+      "type": "professional"
+    },
+    {
+      "id": "neha",
+      "name": "Neha Kapoor",
+      "role": "Angel Investor",
+      "company": "Independent",
+      "institution": "ABC Institute",
+      "type": "investor"
     }
   ],
   "edges": [
     {
-      "from": "user_1",
-      "to": "person_2",
+      "from": "ananya",
+      "to": "rahul",
       "relationship": "alumni"
+    },
+    {
+      "from": "rahul",
+      "to": "priya",
+      "relationship": "coworker"
+    },
+    {
+      "from": "priya",
+      "to": "arjun",
+      "relationship": "former_colleague"
+    },
+    {
+      "from": "arjun",
+      "to": "neha",
+      "relationship": "startup_network"
     }
   ]
 }

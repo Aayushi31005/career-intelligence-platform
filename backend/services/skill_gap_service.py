@@ -12,11 +12,14 @@ ROLE_FILE_MAP = {
 def extract_role_skills(descriptions):
     skills = []
     for desc in descriptions:
-        skills.extend(desc["skills"])
+        skills.extend(desc.get("skills", []))
     return skills
 
 
 def assign_importance(skill_freq: Counter):
+    if not skill_freq:
+        return {}
+
     max_freq = max(skill_freq.values())
     importance = {}
 
@@ -39,18 +42,18 @@ def analyze_skill_gap(payload: dict):
         return {"error": "Unsupported role"}
 
     role_data = load_job_descriptions(ROLE_FILE_MAP[target_role])
-    role_skills = extract_role_skills(role_data["descriptions"])
+    role_skills = extract_role_skills(role_data.get("descriptions", []))
 
     skill_frequency = Counter(role_skills)
     importance_map = assign_importance(skill_frequency)
 
-    existing = sorted(user_skills & set(skill_frequency.keys()))
-    missing = sorted(set(skill_frequency.keys()) - user_skills)
+    existing = sorted(user_skills & set(skill_frequency))
+    missing = sorted(set(skill_frequency) - user_skills)
 
     missing_with_priority = [
         {
             "skill": skill,
-            "importance": importance_map[skill]
+            "importance": importance_map.get(skill)
         }
         for skill in missing
     ]

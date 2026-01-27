@@ -8,88 +8,97 @@
   <link rel="stylesheet" href="../css/components.css" />
 </head>
 
-
 <body data-theme="blue">
 
   <!-- Top Navigation -->
   <header class="topbar">
-    <div class="topbar-left">
-      <span class="logo">Career Intelligence</span>
-    </div>
-
+    <div class="topbar-left">Career Intelligence</div>
     <div class="topbar-right">
       <button class="menu-button">☰</button>
     </div>
   </header>
 
+  <!-- Side / Slide Menu -->
+  <div id="menuPanel" class="menu-panel hidden"></div>
+
+  <!-- Main Page Content -->
   <main class="page">
 
-    <!-- Dropdown Menu -->
-     <div class="menu-panel hidden" id="menuPanel">
-        <nav class="menu-section">
-            <a href="index.html">Home</a>
-
-            <a href="skill_gap.html">Skill Gap</a>
-
-            <a href="ats.html">ATS Readiness</a>
-    
-            <a href="role_matching.html">Role Matching</a>
-
-            <a href="learning.html">Learning</a>
-
-            <a href="network.html">Network Paths</a>
-        </nav>
-
-        <div class="menu-section">
-             <p class="menu-title">Theme</p>
-             <div class="theme-row">
-                <button class="theme-button theme-blue" data-theme="blue"></button>
-                <button class="theme-button theme-teal" data-theme="teal"></button>
-                <button class="theme-button theme-lavender" data-theme="lavender"></button>
-                <button class="theme-button theme-rose" data-theme="rose"></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 🌿 HERO / INTRO -->
-    <section class="intro">
+    <!-- 🌿 HERO -->
+    <section class="home-hero">
       <h1>Career Intelligence Platform</h1>
-      <p>
-        A calm, decision-support system to help you understand
-        career readiness, skill gaps, and intentional networking paths.
+      <p class="hero-subtext">
+        Career clarity, without pressure or guesswork.
       </p>
     </section>
 
-    <!-- 🧠 WORKSPACE -->
-    <section class="workspace">
+    <!-- 💡 WHY THIS EXISTS -->
+    <section class="home-section">
+      <h2>Why this exists</h2>
+      <ul class="why-list">
+        <li>Most career advice is vague, overwhelming, or generic.</li>
+        <li>Job platforms tell you to apply — not how ready you are.</li>
+        <li>Networking feels confusing, awkward, or forced.</li>
+      </ul>
+      <p>
+        This platform exists to replace guessing with clarity —
+        using simple, explainable systems instead of hype.
+      </p>
+    </section>
 
-      <div class="card">
-        <h2>Analyze Your Profile</h2>
+    <!-- 🧩 WHAT THIS HELPS WITH -->
+    <section class="home-section">
+      <h2>What this platform helps you do</h2>
+      <div class="feature-list">
 
-        <label for="resume">Your resume</label>
-        <textarea
-          id="resume"
-          rows="6"
-          placeholder="Paste your resume here..."
-        ></textarea>
+        <div class="feature-item">
+          <strong>Understand skill gaps</strong>
+          <p>See what skills actually matter for your target role and which skills you need to gain.</p>
+        </div>
 
-        <label for="role">Target role</label>
-        <select id="role">
-          <option value="">Select a role</option>
-          <option>Backend Software Engineer</option>
-          <option>Data Analyst</option>
-          <option>Machine Learning Engineer</option>
-        </select>
+        <div class="feature-item">
+          <strong>Match roles to your profile</strong>
+          <p>Discover roles you are ready for now, nearly ready for, and long-term targets.</p>
+        </div>
 
-        <button type="button" id="analyzeBtn">Analyze My Profile</button>
+        <div class="feature-item">
+          <strong>Estimate ATS readiness honestly</strong>
+          <p>Transparent alignment scoring of your resume against your dream job.</p>
+        </div>
+
+        <div class="feature-item">
+          <strong>Learn any skill from the best</strong>
+          <p>Find the best learning resources based on difficulty and relevance.</p>
+        </div>
+
+        <div class="feature-item">
+          <strong>Network with purpose</strong>
+          <p>Build strategic LinkedIn connections that actually move your career forward.</p>
+        </div>
+
       </div>
+    </section>
 
+    <!-- 🌱 MOTIVATION -->
+    <section class="home-section motivation">
+      <p id="motivationText"></p>
+    </section>
+
+    <!-- 👉 HOW TO START -->
+    <section class="home-section">
+      <p class="start-note">
+        When you’re ready, use the menu to explore any tool.
+        There’s no required order.
+      </p>
     </section>
 
   </main>
 
-  <script src="../js/menu.js"> defer</script>
-  <script src="../js/api.js"></script>
-  <script src="../js/skill_gap.js"></script>
+  <!-- Scripts -->
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/skill_gap.js" defer></script>
+  <script src="../js/home.js" defer></script>
+
 </body>
 </html>

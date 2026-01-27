@@ -1,33 +1,29 @@
-document
-  .getElementById("checkATS")
-  .addEventListener("click", async () => {
-    const resume = document.getElementById("resume").value;
-    const role = document.getElementById("role").value;
-    const resultDiv = document.getElementById("atsResults");
+document.getElementById("atsBtn").addEventListener("click", async () => {
+  const resumeText = document.getElementById("resume").value.trim();
+  const role = document.getElementById("role").value.trim();
+  const output = document.getElementById("atsResult");
 
-    if (!resume || !role) {
-      resultDiv.innerHTML = "<p>Please provide resume and target role.</p>";
-      return;
-    }
+  if (!resumeText || !role) {
+    output.innerHTML = "<p>Please provide resume text and target role.</p>";
+    return;
+  }
 
-    const result = await postData("/ats-readiness", {
-      resume_text: resume,
-      target_role: role,
-    });
+  output.innerHTML = "<p>Analyzing...</p>";
 
-    if (result.error) {
-      resultDiv.innerHTML = "<p>Unable to evaluate ATS readiness.</p>";
-      return;
-    }
-
-    resultDiv.innerHTML = `
-      <p><strong>Skill Coverage:</strong> ${(result.skill_coverage * 100).toFixed(0)}%</p>
-      <p><strong>Readiness Level:</strong> ${result.readiness_level}</p>
-
-      <p><strong>Matched Skills:</strong></p>
-      <ul>${result.matched_skills.map(s => `<li>${s}</li>`).join("")}</ul>
-
-      <p><strong>Missing Skills:</strong></p>
-      <ul>${result.missing_skills.map(s => `<li>${s}</li>`).join("")}</ul>
-    `;
+  const response = await postData("/ats-readiness", {
+    resume_text: resumeText,
+    target_role: role
   });
+
+  if (response.error) {
+    output.innerHTML = "<p>ATS analysis failed.</p>";
+    return;
+  }
+
+  output.innerHTML = `
+    <p><strong>Readiness:</strong> ${response.readiness_level}</p>
+    <p><strong>Skill coverage:</strong> ${(response.skill_coverage * 100).toFixed(0)}%</p>
+    <p><strong>Matched skills:</strong> ${response.matched_skills.join(", ")}</p>
+    <p><strong>Missing skills:</strong> ${response.missing_skills.join(", ")}</p>
+  `;
+});

@@ -1,12 +1,45 @@
-const menuButton = document.querySelector(".menu-button");
+// ===== Inject menu HTML so it exists on EVERY page =====
+
 const menuPanel = document.getElementById("menuPanel");
 
-menuButton.addEventListener("click", () => {
-  menuPanel.classList.toggle("hidden");
-});
+if (menuPanel) {
+  menuPanel.innerHTML = `
+    <nav class="menu-section">
+      <a href="index.html">Home</a>
+      <a href="skill_gap.html">Skill Gap</a>
+      <a href="ats.html">ATS Readiness</a>
+      <a href="role_matching.html">Role Matching</a>
+      <a href="learning.html">Learning</a>
+      <a href="network.html">Networking</a>
+    </nav>
 
-document.querySelectorAll(".theme-button").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.body.setAttribute("data-theme", btn.dataset.theme);
+    <div class="menu-section">
+      <p class="menu-title">Theme</p>
+      <div class="theme-row">
+        <button class="theme-button theme-blue" data-theme="blue"></button>
+        <button class="theme-button theme-teal" data-theme="teal"></button>
+        <button class="theme-button theme-lavender" data-theme="lavender"></button>
+        <button class="theme-button theme-rose" data-theme="rose"></button>
+      </div>
+    </div>
+  `;
+}
+
+// ===== Menu toggle =====
+
+const menuButton = document.querySelector(".menu-button");
+
+if (menuButton && menuPanel) {
+  menuButton.addEventListener("click", () => {
+    menuPanel.classList.toggle("hidden");
   });
+}
+
+// ===== Theme switching =====
+
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("theme-button")) {
+    const theme = e.target.dataset.theme;
+    document.body.setAttribute("data-theme", theme);
+  }
 });

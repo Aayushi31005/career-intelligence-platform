@@ -2,20 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Skill Gap Analyzer</title>
+  <title>Skill Gap Analysis</title>
   <link rel="stylesheet" href="../css/base.css" />
+  <link rel="stylesheet" href="../css/components.css" />
 </head>
 
 <body data-theme="blue">
-  <div class="container">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-left">Career Intelligence</div>
+    <div class="topbar-right">
+      <button class="menu-button">☰</button>
+    </div>
+  </header>
+
+  <!-- Menu injected by JS -->
+  <div id="menuPanel" class="menu-panel hidden"></div>
+
+  <main class="container">
+
     <div class="card">
-      <h2>Skill Gap Analyzer</h2>
-      <p>Understand which skills matter for your target role.</p>
+      <h2>Skill Gap Analysis</h2>
+      <p>
+        Enter your current skills and target role.
+        We’ll identify what you already have and what to focus on next.
+      </p>
 
-      <label for="resume">Your resume</label>
-      <textarea id="resume" placeholder="Paste your resume here..."></textarea>
+      <label for="skills">
+        Your current skills (comma-separated)
+      </label>
+      <input
+        id="skills"
+        placeholder="e.g. python, sql, docker"
+      />
 
-      <label for="role">Target role</label>
+      <label for="role">
+        Target role
+      </label>
       <select id="role">
         <option value="">Select a role</option>
         <option>Backend Software Engineer</option>
@@ -23,13 +47,21 @@
         <option>Machine Learning Engineer</option>
       </select>
 
-      <button id="analyzeSkillGap">Analyze</button>
-
-      <div id="results"></div>
+      <button id="analyzeSkillGap">
+        Analyze Skill Gap
+      </button>
     </div>
-  </div>
 
-  <script src="../js/api.js"></script>
-  <script src="../js/skill_gap.js"></script>
+    <div class="card hidden" id="skillGapResults">
+      <h3>Results</h3>
+      <div id="resultsContent"></div>
+    </div>
+
+  </main>
+
+  <script src="../js/menu.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <script src="../js/skill_gap.js" defer></script>
+
 </body>
 </html>

@@ -202,3 +202,65 @@ body {
 .theme-button.teal { background: #14b8a6; }
 .theme-button.lavender { background: #6366f1; }
 .theme-button.rose { background: #f43f5e; }
+
+/* =========================
+   Home Page Styles
+   ========================= */
+
+.home-hero {
+  margin-bottom: 3rem;
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.home-section {
+  margin-bottom: 3rem;
+}
+
+.why-list {
+  margin: 1rem 0 1.5rem 1.2rem;
+}
+
+.why-list li {
+  margin-bottom: 0.5rem;
+}
+
+.feature-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.feature-item {
+  padding: 1rem;
+  border-radius: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.feature-item:hover {
+  background-color: var(--bg-card);
+}
+
+.motivation {
+  font-style: italic;
+  color: var(--primary-dark);
+  font-size: 1rem;
+}
+
+.start-note {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.home-hero {
+  padding: 3rem 0;
+}
+
+.home-section + .home-section {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 2.5rem;
+}

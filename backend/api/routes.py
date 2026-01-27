@@ -24,6 +24,9 @@ def role_matching_endpoint(payload: dict):
 def learning_endpoint(payload: dict):
     return recommend_learning(payload)
 
-@router.get("/network/paths")
-def network_endpoint(target_role: str):
-    return find_network_paths(target_role)
+from typing import Dict
+from backend.services.network_service import find_network_paths
+
+@router.post("/network/paths")
+def network_paths(payload: Dict):
+    return find_network_paths(payload)
