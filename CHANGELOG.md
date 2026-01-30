@@ -2,33 +2,52 @@
 
 All notable changes to this project are documented in this file.
 
-This project follows a learning-first, iterative development approach. Entries focus on meaningful design, architecture, and implementation milestones rather than minor edits.
+This project follows a learning-first, implementation-driven approach.  
+Entries focus on meaningful system, architecture, and UX milestones rather than minor edits.
+
+---
+
+## [0.1.0] – Initial Working Prototype
+
+### Added
+- Fully functional backend implementing five independent intelligence modules:
+  - Skill Gap Analyzer
+  - ATS Readiness Estimator (heuristic)
+  - Job-to-Profile Matching Engine
+  - Learning Resource Recommender
+  - Graph-Based Network Path Finder
+- FastAPI-based API layer with validated endpoints for all features
+- Explainable heuristic logic across all modules (no black-box models)
+- Graph traversal–based networking logic using relationship paths
+- Curated and synthetic datasets for skills, roles, learning resources, and networks
+- Frontend web interface for all five tools
+- Independent feature pages (no forced user workflow)
+- Calm, stress-aware UI with multiple selectable color themes
+- Shared navigation menu across all pages
+- End-to-end local integration between frontend and backend
+- Clear separation of concerns between UI, API, logic, and data layers
+
+### Notes
+- This release represents a complete local, working prototype.
+- All features are usable independently.
+- Outputs are designed to be explainable and interview-safe.
+- No cloud deployment or persistence is included in this version.
 
 ---
 
 ## [Unreleased]
 
-### Added
-- Comprehensive problem statement defining career decision-making challenges
-- Clear product vision with ethical and technical boundaries
-- User personas representing different career stages
-- Design principles focused on calm, clarity, and transparency
-- Color palette and typography system for stress-aware UX
-- End-to-end user journeys across core features
-- Layered system architecture definition
-- Detailed data flow descriptions for all major modules
-- Modular breakdown of core intelligence components
-- Explainable algorithms for skill analysis, resume alignment, and networking
-- Explicit MVP scope with inclusions and exclusions
-- Assumptions and limitations for prototype integrity
-- Future scope outlining realistic extensions
-- Prototype-level cloud architecture design
-- Deployment and configuration strategy
-- Fallback and resilience strategy for graceful degradation
-- Interview reference README for concise project explanation
+### Planned
+- Optional prototype-level cloud deployment to demonstrate backend hosting concepts
+- Environment-based configuration for local vs hosted execution
+- Static data hosting using object storage (job descriptions, skill taxonomy, network graph)
+- Graceful fallback to local cached datasets if hosted services are unavailable
+- Frontend configuration to support hosted backend endpoints
+- Flowcharts and system architecture diagrams based on final implementation
+- UI polish, micro-interactions, and improved visual presentation
 
 ---
 
 ## Notes
-- This changelog will be updated as implementation progresses.
-- Early entries focus on design and system foundations before code development.
+- This changelog emphasizes real, implemented functionality.
+- Future entries will reflect completed work only.
