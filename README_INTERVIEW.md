@@ -6,7 +6,7 @@ This document is a concise reference to help explain the **Career Intelligence P
 
 ## Project Summary (30-second explanation)
 
-The Career Intelligence Platform is a **decision-support system** designed to help tech professionals gain clarity about their career readiness, skill gaps, resume alignment, and networking direction.
+The Career Intelligence Platform is a **decision-support system** designed to help tech professionals reason about about their career readiness, skill gaps, resume alignment, and networking direction.
 
 Unlike job boards or professional social networks, this platform focuses on **guidance rather than automation**, using explainable, data-driven insights to help users decide what to work on next and how close they are to their target roles.
 
@@ -56,8 +56,6 @@ The platform follows a layered architecture:
 - **Intelligence Layer:** Core reasoning and algorithms
 - **Data Layer:** Curated and synthetic datasets
 
-Cloud deployment is included at a prototype level to demonstrate deployment and configuration concepts, not production-scale infrastructure.
-
 ---
 
 ## Design and UX Philosophy
@@ -82,6 +80,7 @@ Key design principles include:
 - Modeled networking using **graph traversal**, not outreach automation.
 - Designed fallback behavior using **cached datasets** instead of failing hard.
 - Scoped cloud usage carefully to avoid overengineering.
+- Designed frontend tools to be independent, avoiding forced user flows or assumptions about usage order
 
 ---
 
@@ -102,7 +101,6 @@ This project demonstrates:
 - system design thinking,
 - data-driven reasoning,
 - ethical AI usage,
-- cloud and deployment awareness,
 - UX empathy for stressed users,
 - and the ability to scope and document complex systems.
 
@@ -113,10 +111,10 @@ It is designed as a **learning-first, portfolio-ready** project.
 ## How to Navigate the Repository
 
 - `docs/` → design, architecture, algorithms, and decisions
-- `backend/` → core logic and API (work in progress)
-- `frontend/` → user interface (work in progress)
+- `backend/` → core logic and API 
+- `frontend/` → user interface 
 - `data/` → curated and synthetic datasets
-- `notebooks/` → exploratory analysis and experiments
+- `notebooks/` → exploratory analysis and validation
 
 ---
 
