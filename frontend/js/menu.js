@@ -38,8 +38,11 @@ if (menuButton && menuPanel) {
 // ===== Theme switching =====
 
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("theme-button")) {
-    const theme = e.target.dataset.theme;
+  const btn = e.target.closest(".theme-button");
+  if (!btn) return;
+
+  const theme = btn.dataset.theme;
+  if (theme) {
     document.body.setAttribute("data-theme", theme);
   }
 });

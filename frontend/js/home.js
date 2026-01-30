@@ -6,7 +6,7 @@ const messages = [
   "You don’t need to know everything. Just what’s next."
 ];
 
-const el = document.getElementById("motivationText");
+const el = document.getElementById("motivation");
 
 if (el) {
   const random = Math.floor(Math.random() * messages.length);

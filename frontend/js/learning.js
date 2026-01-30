@@ -5,21 +5,30 @@ document
     const resultDiv = document.getElementById("learningResults");
 
     if (!skillInput) {
-      resultDiv.innerHTML = "<p>Please enter a skill.</p>";
+      resultDiv.innerHTML = `
+        <p class="muted">Please enter at least one skill.</p>
+      `;
       return;
     }
 
     const skills = skillInput
       .toLowerCase()
       .split(",")
-      .map(s => s.trim());
+      .map(s => s.trim())
+      .filter(Boolean);
+
+    resultDiv.innerHTML = `<p class="muted">Finding learning recommendations…</p>`;
 
     const result = await postData("/learning", {
       missing_skills: skills,
     });
 
     if (result.error || !result.recommendations) {
-      resultDiv.innerHTML = "<p>No recommendations available.</p>";
+      resultDiv.innerHTML = `
+        <p class="muted">
+          Unable to generate learning recommendations right now.
+        </p>
+      `;
       return;
     }
 
@@ -27,22 +36,27 @@ document
 
     for (const skill in result.recommendations) {
       html += `
-        <h3>${skill}</h3>
+        <h4>${skill}</h4>
         <ul>
           ${result.recommendations[skill]
             .map(
               r => `
-              <li>
-                <strong>${r.title}</strong><br />
-                Platform: ${r.platform}<br />
-                Level: ${r.difficulty}
-              </li>
-            `
+                <li>
+                  <strong>${r.title}</strong><br />
+                  Platform: ${r.platform}<br />
+                  Level: ${r.difficulty}
+                </li>
+              `
             )
             .join("")}
         </ul>
       `;
     }
 
-    resultDiv.innerHTML = html || "<p>No resources found.</p>";
+    resultDiv.innerHTML = `
+      <div class="result-block">
+        <h3>Results</h3>
+        ${html}
+      </div>
+    `;
   });

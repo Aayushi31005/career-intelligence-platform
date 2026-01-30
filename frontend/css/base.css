@@ -10,7 +10,12 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--bg-main);
+  margin: 0;
+  background: linear-gradient(
+    180deg,
+    var(--bg-main) 0%,
+    #ffffff 100%
+  );
   color: var(--text-main);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.6;
@@ -26,9 +31,22 @@ body {
   padding: 2rem 1.5rem;
 }
 
+.page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
 /* =========================
    TYPOGRAPHY
    ========================= */
+
 h1 {
   font-size: 2rem;
   font-weight: 600;
@@ -45,11 +63,6 @@ h2 {
 
 p {
   font-size: 0.95rem;
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-}
-
-p {
   color: var(--text-muted);
   margin-bottom: 1rem;
 }
@@ -76,7 +89,8 @@ input {
 }
 
 /* =========================
-   BUTTONS
+   BUTTON BASE
+   (interaction styles in components.css)
    ========================= */
 
 button {
@@ -97,7 +111,6 @@ button:hover {
    THEMES
    ========================= */
 
-/* Calm Blue (Default) */
 [data-theme="blue"] {
   --bg-main: #eef4ff;
   --bg-card: #ffffff;
@@ -111,7 +124,6 @@ button:hover {
   --border-soft: #e5e7eb;
 }
 
-/* Soft Teal */
 [data-theme="teal"] {
   --bg-main: #ecfdfd;
   --bg-card: #ffffff;
@@ -125,7 +137,6 @@ button:hover {
   --border-soft: #d1fae5;
 }
 
-/* Lavender */
 [data-theme="lavender"] {
   --bg-main: #f5f3ff;
   --bg-card: #ffffff;
@@ -139,7 +150,6 @@ button:hover {
   --border-soft: #e0e7ff;
 }
 
-/* Soft Rose */
 [data-theme="rose"] {
   --bg-main: #fff1f2;
   --bg-card: #ffffff;
@@ -153,61 +163,12 @@ button:hover {
   --border-soft: #ffe4e6;
 }
 
-body {
-  min-height: 100vh;
-  margin: 0;
-  background: linear-gradient(
-    180deg,
-    var(--bg-main) 0%,
-    #ffffff 100%
-  );
-  color: var(--text-main);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-
-.page {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
-.intro {
-  max-width: 700px;
-  margin-bottom: 3rem;
-}
-
-.workspace {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-
-.theme-row {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.theme-button {
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.theme-button.blue { background: #3b82f6; }
-.theme-button.teal { background: #14b8a6; }
-.theme-button.lavender { background: #6366f1; }
-.theme-button.rose { background: #f43f5e; }
-
 /* =========================
-   Home Page Styles
+   HOME PAGE BASE STYLES
    ========================= */
 
 .home-hero {
+  padding: 3rem 0;
   margin-bottom: 3rem;
 }
 
@@ -220,29 +181,9 @@ body {
   margin-bottom: 3rem;
 }
 
-.why-list {
-  margin: 1rem 0 1.5rem 1.2rem;
-}
-
-.why-list li {
-  margin-bottom: 0.5rem;
-}
-
-.feature-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.feature-item {
-  padding: 1rem;
-  border-radius: 10px;
-  transition: background-color 0.2s ease;
-}
-
-.feature-item:hover {
-  background-color: var(--bg-card);
+.home-section + .home-section {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 2.5rem;
 }
 
 .motivation {
@@ -251,16 +192,31 @@ body {
   font-size: 1rem;
 }
 
-.start-note {
+/* =========================
+   ANIMATIONS
+   ========================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page,
+.container {
+  animation: fadeUp 0.4s ease-out;
+}
+
+/* =========================
+   TEXT STATES
+   ========================= */
+
+.muted {
   color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
-.home-hero {
-  padding: 3rem 0;
-}
-
-.home-section + .home-section {
-  border-top: 1px solid var(--border-soft);
-  padding-top: 2.5rem;
+  font-size: 0.9rem;
 }

@@ -5,32 +5,45 @@ document
     const resultDiv = document.getElementById("roleResults");
 
     if (!resumeText) {
-      resultDiv.innerHTML = "<p>Please paste your resume text.</p>";
+      resultDiv.innerHTML = `
+        <p class="muted">Please paste your resume text.</p>
+      `;
       return;
     }
+
+    resultDiv.innerHTML = `<p class="muted">Matching suitable roles…</p>`;
 
     const result = await postData("/role-matching", {
       resume_text: resumeText,
     });
 
     if (result.error || !result.results) {
-      resultDiv.innerHTML = "<p>Unable to fetch role matching data.</p>";
+      resultDiv.innerHTML = `
+        <p class="muted">
+          Unable to match roles with the provided resume.
+        </p>
+      `;
       return;
     }
 
     resultDiv.innerHTML = `
-      <ul>
-        ${result.results
-          .map(
-            role => `
-            <li>
-              <strong>${role.role}</strong><br />
-              Skill Coverage: ${(role.skill_coverage * 100).toFixed(0)}%<br />
-              Fit Level: <strong>${role.fit_level}</strong>
-            </li>
-          `
-          )
-          .join("")}
-      </ul>
+      <div class="result-block">
+        <h3>Results</h3>
+        <ul>
+          ${result.results
+            .map(
+              role => `
+                <li>
+                  <strong>${role.role}</strong><br />
+                  Skill Coverage:
+                  ${(role.skill_coverage * 100).toFixed(0)}%<br />
+                  Fit Level:
+                  <strong>${role.fit_level}</strong>
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      </div>
     `;
   });

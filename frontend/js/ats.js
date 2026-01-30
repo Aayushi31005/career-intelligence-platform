@@ -4,11 +4,13 @@ document.getElementById("atsBtn").addEventListener("click", async () => {
   const output = document.getElementById("atsResult");
 
   if (!resumeText || !role) {
-    output.innerHTML = "<p>Please provide resume text and target role.</p>";
+    output.innerHTML = `
+      <p class="muted">Please provide resume text and target role.</p>
+    `;
     return;
   }
 
-  output.innerHTML = "<p>Analyzing...</p>";
+  output.innerHTML = `<p class="muted">Analyzing your resume…</p>`;
 
   const response = await postData("/ats-readiness", {
     resume_text: resumeText,
@@ -16,14 +18,28 @@ document.getElementById("atsBtn").addEventListener("click", async () => {
   });
 
   if (response.error) {
-    output.innerHTML = "<p>ATS analysis failed.</p>";
+    output.innerHTML = `
+      <p class="muted">
+        Unable to analyze ATS readiness right now.
+      </p>
+    `;
     return;
   }
 
   output.innerHTML = `
-    <p><strong>Readiness:</strong> ${response.readiness_level}</p>
-    <p><strong>Skill coverage:</strong> ${(response.skill_coverage * 100).toFixed(0)}%</p>
-    <p><strong>Matched skills:</strong> ${response.matched_skills.join(", ")}</p>
-    <p><strong>Missing skills:</strong> ${response.missing_skills.join(", ")}</p>
+    <div class="result-block">
+      <h3>Results</h3>
+
+      <p><strong>Readiness:</strong> ${response.readiness_level}</p>
+      <p><strong>Skill coverage:</strong>
+        ${(response.skill_coverage * 100).toFixed(0)}%
+      </p>
+      <p><strong>Matched skills:</strong>
+        ${response.matched_skills.join(", ")}
+      </p>
+      <p><strong>Missing skills:</strong>
+        ${response.missing_skills.join(", ")}
+      </p>
+    </div>
   `;
 });

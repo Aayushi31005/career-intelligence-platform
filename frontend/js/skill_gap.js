@@ -8,7 +8,10 @@ document
     const resultsContent = document.getElementById("resultsContent");
 
     if (!skillsInput || !role) {
-      alert("Please enter skills and select a role.");
+      resultsContent.innerHTML = `
+        <p class="muted">Please enter skills and select a role.</p>
+      `;
+      resultsCard.classList.remove("hidden");
       return;
     }
 
@@ -17,40 +20,40 @@ document
       .map(s => s.trim().toLowerCase())
       .filter(Boolean);
 
-    const payload = {
+    resultsCard.classList.remove("hidden");
+    resultsContent.innerHTML = `<p class="muted">Analyzing your profile…</p>`;
+
+    const result = await postData("/skill-gap", {
       user_skills: userSkills,
       target_role: role
-    };
-
-    resultsContent.innerHTML = "Analyzing...";
-    resultsCard.classList.remove("hidden");
-
-    const result = await postData("/skill-gap", payload);
+    });
 
     if (result.error) {
-      resultsContent.innerHTML =
-        "<p>Unable to analyze skill gap.</p>";
+      resultsContent.innerHTML = `
+        <p class="muted">
+          Unable to analyze skill gap right now. Please try again.
+        </p>
+      `;
       return;
     }
 
     resultsContent.innerHTML = `
-      <p><strong>Target Role:</strong> ${result.role}</p>
+      <div class="result-block">
+        <h3>Results</h3>
 
-      <p><strong>Existing Skills:</strong></p>
-      <ul>
-        ${result.existing_skills
-          .map(skill => `<li>${skill}</li>`)
-          .join("")}
-      </ul>
+        <p><strong>Target Role:</strong> ${result.role}</p>
 
-      <p><strong>Missing Skills:</strong></p>
-      <ul>
-        ${result.missing_skills
-          .map(
-            s =>
-              `<li>${s.skill} — <em>${s.importance}</em></li>`
-          )
-          .join("")}
-      </ul>
+        <p><strong>Existing Skills:</strong></p>
+        <ul>
+          ${result.existing_skills.map(skill => `<li>${skill}</li>`).join("")}
+        </ul>
+
+        <p><strong>Missing Skills:</strong></p>
+        <ul>
+          ${result.missing_skills
+            .map(s => `<li>${s.skill} — <em>${s.importance}</em></li>`)
+            .join("")}
+        </ul>
+      </div>
     `;
-});
+  });
